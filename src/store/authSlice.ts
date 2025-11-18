@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthState, LoginCredentials } from '@/interfaces';
+import { AuthState, LoginCredentials, User, LoginResponseWithUser } from '@/interfaces';
+import { AuthService } from '@/services';
 
 // Helper functions
 const getStoredUser = () => {
@@ -28,27 +29,15 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials: LoginCredentials, { rejectWithValue }) => {
     try {
-      const formData = new FormData();
-      formData.append('username', credentials.username);
-      formData.append('password', credentials.password);
-
-      const response = await fetch('http://localhost:8000/token', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error('Credenciales inválidas');
-      }
-
-      const data = await response.json();
+      const response = await AuthService.login(credentials);
       
-      localStorage.setItem('token', data.access_token);
+      localStorage.setItem('token', response.access_token);
       
-      const user = {
+      // Crear objeto de usuario basado en el backend
+      const user: User = {
         id: '1',
         username: credentials.username,
-        email: 'admin@banco.com',
+        email: credentials.username, // El backend usa email como username
         firstName: 'Administrador',
         lastName: 'Banco',
         role: 'admin' as const,
@@ -59,13 +48,15 @@ export const loginUser = createAsyncThunk(
 
       localStorage.setItem('user', JSON.stringify(user));
 
-      return {
-        access_token: data.access_token,
-        token_type: data.token_type || 'bearer',
+      const loginResponseWithUser: LoginResponseWithUser = {
+        access_token: response.access_token,
+        token_type: response.token_type || 'bearer',
         user,
       };
+
+      return loginResponseWithUser;
     } catch (error: any) {
-      return rejectWithValue(error.message || 'Error al iniciar sesión');
+      return rejectWithValue(error.response?.data?.detail || 'Error al iniciar sesión');
     }
   }
 );

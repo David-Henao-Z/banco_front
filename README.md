@@ -20,6 +20,7 @@ Antes de comenzar, asegúrate de tener instalado:
 - **Git** - [Descargar aquí](https://git-scm.com/)
 
 ### Verificar instalación:
+
 ```bash
 node --version  # Debe mostrar v18.x.x o superior
 npm --version   # Debe mostrar 8.x.x o superior
@@ -29,17 +30,20 @@ git --version   # Cualquier versión reciente
 ## 🛠️ Instalación
 
 ### 1. Clonar el repositorio
+
 ```bash
 git clone https://github.com/David-Henao-Z/banco_front.git
 cd banco_front
 ```
 
 ### 2. Instalar dependencias
+
 ```bash
 npm install
 ```
 
 ### 3. Iniciar el servidor de desarrollo
+
 ```bash
 npm run dev
 ```
@@ -58,43 +62,52 @@ npm run lint         # Ejecuta el linter ESLint
 ## 🎯 Cómo Usar la Aplicación
 
 ### 1. **Página Principal**
+
 - Información general del banco
 - Servicios ofrecidos
 - Misión y visión
 - Botón para iniciar sesión
 
 ### 2. **Iniciar Sesión**
+
 Credenciales de prueba:
+
 - **Usuario:** `admin@banco.com`
 - **Contraseña:** `admin123`
 
 ### 3. **Dashboard Administrativo**
+
 Una vez autenticado, accede a 5 secciones:
 
 #### 📊 **Resumen General**
+
 - Estadísticas en tiempo real
 - Actividad reciente
 - Alertas del sistema
 
 #### 👥 **Gestión de Clientes**
+
 - Lista de clientes registrados
 - Búsqueda y filtrado
 - Agregar nuevos clientes
 - Ver detalles de cada cliente
 
 #### 💳 **Gestión de Cuentas**
+
 - Administración de cuentas bancarias
 - Estados: Activa, Inactiva, Congelada
 - Filtros por tipo y estado
 - Balance total del sistema
 
 #### 🏦 **Tipos de Cuenta**
+
 - Configuración de productos bancarios
 - Cuenta Básica, Ahorros, Corriente, Premium
 - Tasas de interés y comisiones
 - Características de cada tipo
 
 #### 💰 **Transacciones**
+
 - Historial completo de transacciones
 - Filtros por tipo: Depósito, Retiro, Transferencia, Pago
 - Estados: Completada, Pendiente, Fallida
@@ -105,7 +118,9 @@ Una vez autenticado, accede a 5 secciones:
 Este proyecto utiliza la metodología **Atomic Design** para organizar los componentes de manera escalable y mantenible.
 
 ### 🔬 **Átomos** (`src/components/atoms/`)
+
 Componentes básicos e indivisibles:
+
 - **Button** - Botones reutilizables con variantes
 - **Input** - Campos de entrada con validación
 - **Card** - Contenedores de contenido
@@ -118,14 +133,16 @@ Componentes básicos e indivisibles:
 ```
 
 ### 🧪 **Moléculas** (`src/components/molecules/`)
+
 Combinaciones simples de átomos:
+
 - **Sidebar** - Navegación lateral del dashboard
 - **DashboardHeader** - Header con información del usuario
 - **StatsCard** - Tarjetas de estadísticas
 
 ```tsx
 // Ejemplo de uso
-<StatsCard 
+<StatsCard
   title="Total Clientes"
   value="2,543"
   icon="👥"
@@ -134,12 +151,16 @@ Combinaciones simples de átomos:
 ```
 
 ### 🦠 **Organismos** (`src/components/organisms/`)
+
 Componentes complejos que forman secciones:
+
 - **LoginForm** - Formulario completo de autenticación
 - **ProtectedRoute** - Protección de rutas
 
 ### 📄 **Templates** (`src/components/templates/`)
+
 Layouts de páginas completas:
+
 - **OverviewSection** - Sección de resumen
 - **ClientsSection** - Gestión de clientes
 - **AccountsSection** - Gestión de cuentas
@@ -147,7 +168,9 @@ Layouts de páginas completas:
 - **TransactionsSection** - Historial de transacciones
 
 ### 🖼️ **Páginas** (`src/pages/`)
+
 Páginas completas de la aplicación:
+
 - **HomePage** - Página de inicio
 - **LoginPage** - Página de login
 - **Dashboard** - Panel administrativo
@@ -179,39 +202,48 @@ banco_front/
 ## 🔧 Tecnologías Utilizadas
 
 ### **Frontend Framework**
+
 - **React 18** - Biblioteca de interfaz de usuario
 - **TypeScript** - Superset tipado de JavaScript
 - **Vite** - Herramienta de construcción rápida
 
 ### **Estilos**
+
 - **Tailwind CSS** - Framework de CSS utilitario
 - **PostCSS** - Procesador de CSS
 
 ### **Estado Global**
+
 - **Redux Toolkit** - Gestión de estado simplificada
 - **React Redux** - Bindings oficiales de React para Redux
 
 ### **Routing**
+
 - **React Router DOM** - Enrutamiento declarativo
 
 ### **Herramientas de Desarrollo**
+
 - **ESLint** - Linter de JavaScript/TypeScript
 - **Git** - Control de versiones
 
 ## 🌐 Integración con Backend
 
 La aplicación está configurada para conectarse con una API backend en:
+
 - **URL:** `http://localhost:8000`
 - **Endpoint de autenticación:** `/token`
 
 ### Configuración de CORS
+
 Asegúrate de que tu backend permita solicitudes desde:
+
 - `http://localhost:5173` (desarrollo)
 - `http://localhost:4173` (preview)
 
 ## 📱 Diseño Responsive
 
 La aplicación está optimizada para:
+
 - **Desktop** (1024px+)
 - **Tablet** (768px - 1023px)
 - **Mobile** (320px - 767px)
@@ -226,6 +258,7 @@ La aplicación está optimizada para:
 ## 🚀 Despliegue
 
 ### Para producción:
+
 ```bash
 npm run build
 ```
@@ -233,6 +266,7 @@ npm run build
 Los archivos de producción se generarán en la carpeta `dist/`
 
 ### Plataformas recomendadas:
+
 - **Vercel** (recomendado para React)
 - **Netlify**
 - **GitHub Pages**
