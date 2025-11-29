@@ -3,7 +3,7 @@ import { store } from '@/store';
 import { logoutUser } from '@/store/authSlice';
 
 // Configuración base de la API
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'http://127.0.0.1:8000';
 
 // Instancia principal de Axios
 const apiClient: AxiosInstance = axios.create({
